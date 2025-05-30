@@ -19,7 +19,7 @@
 
                         <div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
                             <span class="ltext-101 cl0 respon2">
-                                Bienvenidos a TecnoPaq
+                                Bienvenidos a TecnoOptic
                             </span>
                         </div>
                             
