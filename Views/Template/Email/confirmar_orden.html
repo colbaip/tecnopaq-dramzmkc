@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orden de Compra</title>
+    <style type="text/css">
+        p{ font-family: Arial;letter-spacing: 1px;color: #7f7f7f; font-size: 12px;}
+        hr{border: 0;border-top: 1px solid #ccc;}
+        h4{font-family: arial; margin: 0;}
+        table{width: 100%; max-width: 600px; margin: 10px auto; border: 1px solid #ccc; border-spacing: 0;}
+        table tr td, table tr th{padding: 5px 10px; font-family: arial; font-size: 12px;}
+        #detallerOrden tr td{border: 1px solid #ccc;}
+        .table-active{background-color: #ccc;}
+        .text-center{text-align: center;}
+        .text-right{text-align: right;}
+
+        @media screen and (max-width: 470px){
+            .logo{width: 90px;}
+            p, table tr td, table tr th{font-size: 9px;}
+        } 
+
+    </style>
+</head>
+<body>
+    <div>
+        <br>
+        <p class="text-center">Se ha generado una orden, a continuacion encontraras los datos: </p>
+        <br>
+        <hr>
+        <br>
+
+        <table>
+            <tr>
+                <td width="33.33%">
+                    <img src="http://localhost/tienda/Assets/ecommerce/images/icons/logo-01.png" alt="Logo">
+                </td>
+                <td width="33.33%">
+                    <div class="text-center">
+                        <h4><strong>SISTEMA DE VENTAS TECNOPAQ</strong></h4><br>
+                        <p>
+
+                            Av Ratti 999 - Ituzaingo <br>
+                            Telefono - +(954) 4581-4545 <br>
+                            Email: info@tecnopaq.com <br>
+                            Buenos Aires - CP 1714  <br>
+                        </p><br>
+                    </div>
+                </td>
+                <td width="33.33%">
+                    <div class="text-right">
+                        <p>Nro Orden: <strong>00001</strong><br>
+                
+                            Fecha:  20/02/24 <br>
+                            Metodo Pago:  Paypal <br>
+                            Transaccion:  43534543523 <br>
+                            Buenos Aires - CP 1714 <br>
+                        </p><br>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td width="140">Nombre:  </td>
+                <td>Mauricio Armoa</td>
+            </tr>
+            <tr>
+                <td>Telefono </td>
+                <td>462656222</td>
+            </tr>
+            <tr>
+                <td>Direccion de Envio </td>
+                <td>Almafuerte 1471 - Concepcion del Uruguay </td>
+            </tr>
+        </table>
+        <table>
+            <thead class="table-active">
+                <tr>
+                    <th>Descripcion</th>
+                    <th class="text-right">Precio</th>
+                    <th class="text-center">Cantidad</th>
+                    <th class="text-right">Importe</th>
+                </tr>
+            </thead>
+            <tbody id="detalleOrden">
+                <tr>
+                    <td>Teclado Mecanico c/cable</td>
+                    <td class="text-right">100</td>
+                    <td class="text-center">2</td>
+                    <td class="text-right">200</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="3" class="text-right">Subtotal</th>
+                    <td class="text-right">200</td>
+                </tr>
+                <tr>
+                    <th colspan="3" class="text-right">Envio</th>
+                    <td class="text-right">100</td>
+                </tr>
+                <tr>
+                    <th colspan="3" class="text-right">Total</th>
+                    <td class="text-right">300</td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-center">
+            <p>Si tiene preguntas sobre tu pedido, <br>pongase en contacto con nombre, telefono y Email</p>
+            <h4>¡Gracias por tu compra...!</h4>
+        </div>
+    </div>
+    
+</body>
+</html>

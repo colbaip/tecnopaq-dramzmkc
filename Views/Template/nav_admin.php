@@ -1,0 +1,104 @@
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="<?= media(); ?>/images/batman.jpg" alt="User Image">
+        <div>
+          <p class="app-sidebar__user-name"> <?= $_SESSION['userData']['nombres']; ?></p>
+          <p class="app-sidebar__user-designation"> <?= $_SESSION['userData']['nombrerol']; ?></p>
+        </div>
+      </div>
+      <ul class="app-menu">
+      <li>
+            <a class="app-menu__item" href="<?= base_url(); ?>" target="_blank">
+                <i class="app-menu__icon fa fas fa-globe" aria-hidden="true"></i>
+                <span class="app-menu__label">Ver sitio web</span>
+            </a>
+        </li>
+        <?php if(!empty($_SESSION['permisos'][1]['r'])){?>
+        <li>
+            <a class="app-menu__item" href="<?= base_url(); ?>/dashboard">
+                <i class="app-menu__icon fa fa-dashboard"></i>
+                <span class="app-menu__label">Dashboard</span>
+            </a>
+        </li>
+        <?php } ?>
+        <?php if(!empty($_SESSION['permisos'][1]['r'])){?>
+        <li class="treeview">
+            <a class="app-menu__item" href="#" data-toggle="treeview">
+                <i class="app-menu__icon fa fa-users"></i>
+                <span class="app-menu__label">Usuarios</span>
+                <i class="treeview-indicator fa fa-angle-right"></i>
+            </a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="<?= base_url(); ?>/usuarios"><i class="icon fa fa-id-card-o"></i> Usuarios</a></li>
+            <li><a class="treeview-item" href="<?= base_url(); ?>/roles"><i class="icon fa fa-toggle-on"></i> Roles</a></li>
+          </ul>
+        </li>
+        <?php } ?>
+        <?php if(!empty($_SESSION['permisos'][3]['r'])){?>
+        <li>
+            <a class="app-menu__item" href="<?= base_url(); ?>/clientes">
+            <i class="app-menu__icon fa fa-user"></i>
+            <span class="app-menu__label">Clientes</span>
+            </a>
+        </li>
+        <?php } ?>
+        <?php if(!empty($_SESSION['permisos'][5]['r']) || !empty($_SESSION['permisos'][6]['r']) ){?>
+        <li class="treeview">
+            <a class="app-menu__item" href="#" data-toggle="treeview">
+                <i class="app-menu__icon fa fa-briefcase"></i>
+                <span class="app-menu__label">Tienda</span>
+                <i class="treeview-indicator fa fa-angle-right"></i>
+            </a>
+          <ul class="treeview-menu">
+             <?php if(!empty($_SESSION['permisos'][5]['r'])){?>
+            <li><a class="treeview-item" href="<?= base_url(); ?>/productos"><i class="icon fa fa-barcode"></i> Productos </a></li>
+            <?php } ?>
+            <?php if(!empty($_SESSION['permisos'][6]['r'])){?>
+            <li><a class="treeview-item" href="<?= base_url(); ?>/categorias"><i class="icon fa fa-tags"></i> Categorias </a></li>
+            <?php } ?>
+          </ul>
+        </li>
+         <?php } ?>
+        <?php if(!empty($_SESSION['permisos'][4]['r'])){?>
+        <li>
+            <a class="app-menu__item" href="<?= base_url(); ?>/pedidos">
+            <i class="app-menu__icon fa fa-shopping-cart "></i>
+            <span class="app-menu__label">Pedidos</span>
+            </a>
+        </li>
+         <?php } ?>
+         <?php if(!empty($_SESSION['permisos'][MSUSCRIPTORES]['r'])){?>
+        <li>
+            <a class="app-menu__item" href="<?= base_url(); ?>/suscriptores">
+            <i class="app-menu__icon fa fa-user-tie" aria-hidden="true"></i>
+            <span class="app-menu__label">Suscriptores</span>
+            </a>
+        </li>
+         <?php } ?>
+         <?php if(!empty($_SESSION['permisos'][MCONTACTOS]['r'])){?>
+        <li>
+            <a class="app-menu__item" href="<?= base_url(); ?>/contactos">
+            <i class="app-menu__icon fa fa-envelope" aria-hidden="true"></i>
+            <span class="app-menu__label">Mensajes</span>
+            </a>
+        </li>
+         <?php } ?>
+         <?php if(!empty($_SESSION['permisos'][MPAGINAS]['r'])){?>
+        <li>
+            <a class="app-menu__item" href="<?= base_url(); ?>/paginas">
+            <i class="app-menu__icon fa fa-window-restore" aria-hidden="true"></i>
+            <span class="app-menu__label">Paginas</span>
+            </a>
+        </li>
+         <?php } ?>
+         
+        <li>
+            <a class="app-menu__item" href="<?= base_url(); ?>/logout">
+            <i class="app-menu__icon fa fa-sign-out"></i>
+            <span class="app-menu__label">Logout</span>
+            </a>
+        </li>
+      </ul>
+    </aside>
+    

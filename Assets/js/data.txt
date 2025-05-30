@@ -1,0 +1,18 @@
+{ 
+    "data": [
+
+	{
+		"idrol":"1",
+		"nombrerol":"Administrador",
+		"descripcion":"Administrador del Sistema",
+		"status":"1"
+	},
+	{
+		"idrol":"2",
+		"nombrerol":"Vendedor",
+		"descripcion":"Usuario vendedor",
+		"status":"1"
+	}
+  ]
+
+}

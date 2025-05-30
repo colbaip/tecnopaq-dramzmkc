@@ -1,0 +1,321 @@
+	
+	
+	<?php
+		headerEcommerce($data);
+		$arrSlider = $data['slider'];
+		$arrBanner = $data['banner'];
+		$arrProductos = $data['productos'];
+		#dep($arrProductos);
+	?>
+
+	<!-- Slider -->
+	<section class="section-slide">
+		<div class="wrap-slick1">
+			<div class="slick1">
+				<?php 
+				for($i=0;$i < count($arrSlider) ; $i++){
+					$ruta = $arrSlider[$i]['ruta']
+				?>
+				
+					<div class="item-slick1" style="background-image: url(<?= $arrSlider[$i]['portada'] ?>);">
+						<div class="container h-full">
+							<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+								<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
+									<span class="ltext-101 cl2 respon2">
+										<?= $arrSlider[$i]['descripcion'] ?>
+									</span>
+								</div>
+									
+								<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
+									<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+										<?= $arrSlider[$i]['nombre'] ?>
+									</h2>
+								</div>
+									
+								<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
+									<a href="<?= base_url().'/tienda/categoria/'.$arrSlider[$i]['idcategoria'].'/'.$ruta ?>" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+										Ver productos
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				<?php 
+				} ?>
+
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Banner -->
+	<div class="sec-banner bg0 p-t-80 p-b-50">
+		<div class="container">
+			<div class="row">
+				<?php 
+					for ($j=0; $j < count($arrBanner); $j++) { 
+						$ruta = $arrBanner[$j]['ruta']
+						# code...
+				?>
+				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+					<!-- Block1 -->
+
+					<div class="block1 wrap-pic-w">
+						<img src="<?= $arrBanner[$j]['portada'] ?>" alt="<?= $arrBanner[$j]['nombre'] ?>">
+
+						<a href="<?= base_url().'/tienda/categoria/'.$arrBanner[$j]['idcategoria'].'/'.$ruta ?>" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<div class="block1-txt-child1 flex-col-l">
+								<span class="block1-name ltext-102 trans-04 p-b-8">
+									<?= $arrSlider[$j]['nombre'] ?>
+								</span>
+
+								<!--span class="block1-info stext-102 trans-04">
+									<?= $arrSlider[$j]['nombre'] ?>
+								</span-->
+							</div>
+
+							<div class="block1-txt-child2 p-b-4 trans-05">
+								<div class="block1-link stext-101 cl0 trans-09">
+									Ver Productos
+								</div>
+							</div>
+						</a>
+					</div>
+
+				</div>
+				<?php 
+				}?>
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Product -->
+	<section class="bg0 p-t-23 p-b-140">
+		<div class="container">
+			<div class="p-b-10">
+				<h3 class="ltext-103 cl5">
+					Productos Nuevos
+				</h3>
+			</div>
+			<hr>
+			<div class="row isotope-grid">
+				<?php 
+				for ($p=0; $p < count($arrProductos); $p++) { 
+					$ruta=$arrProductos[$p]['ruta'];
+					if(count($arrProductos[$p]['images']) > 0){
+						$portada = $arrProductos[$p]['images'][0]['url_image'];
+					}else{
+						$portada = media().'/images/uploads/no-img.jpg';
+					}
+				
+				?>
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+					<!-- Block2 -->
+					<div class="block2">
+						<div class="block2-pic hov-img0">
+							<img src="<?= $portada ?>" alt="<?php $arrProductos[$p]['nombre']?>">
+							<a href="<?= base_url().'/tienda/producto/'.$arrProductos[$p]['idproducto'].'/'.$ruta; ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								Ver producto
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">
+								<a href="<?= base_url().'/tienda/producto/'.$arrProductos[$p]['idproducto'].'/'.$ruta; ?>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									<?= $arrProductos[$p]['nombre']?>
+								</a>
+
+								<span class="stext-105 cl3">
+									<?= SMONEY.formatMoney($arrProductos[$p]['precio'])?>
+								</span>
+							</div>
+
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a href="#" 
+								 id="<?= openssl_encrypt($arrProductos[$p]['idproducto'],METHODENCRIPT,KEY); ?>"
+								 class="btn-addwish-b2 dis-block pos-relative js-addwish-b2 js-addcart-detail
+								 		icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+									<i class="zmdi zmdi-shopping-cart"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<?php 
+				}?>
+			</div>
+
+			<!-- Load more -->
+			<div class="flex-c-m flex-w w-full p-t-45">
+				<a href="<?=base_url() ?>/tienda" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+					Ver más
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- MisionyVision -->
+	<section class="bg0">
+				<div class="container">
+					<div class="row">
+						<div class="order-md-2 col-md-7 col-lg-8 p-b-30">
+							<div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
+								<div class="soporte-telecom">
+                                <h3 class="mtext-111 cl2 p-b-16">Soporte experto en telecomunicaciones</h3>
+                                    <p>Con años de experiencia en el sector, nuestro equipo técnico está disponible <strong>las 24 horas, los 7 días de la semana</strong>, para garantizar el rendimiento óptimo de tus redes y mantener tu negocio siempre operativo.</p>
+                                    <ul>
+                                        <li>✅ <strong>Asistencia técnica in situ</strong></li>
+                                        <li>✅ <strong>Garantía extendida en todos nuestros productos</strong></li>
+                                        <li>✅ <strong>Reposición rápida de piezas y repuestos</strong></li>
+                                        <li>✅ <strong>Soluciones a medida para cada necesidad de conectividad</strong></li>
+                                    </ul>
+                                    <p>Confía en la experiencia de nuestros especialistas para una infraestructura de telecomunicaciones segura, eficiente y confiable.</p>
+                                </div>
+							</div>
+						</div>
+						    <div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
+								<div class="how-bor2">
+									<div class="hov-img0"><img src="https://tecnopaq.dramelissapalma.com/Assets/images/uploads/Atencion.jpg" alt="" width="500" height="333"></div>
+									</div>
+								</div>
+							</div>
+						<br>
+						<br>
+						<br>
+						<div class="row p-b-50">
+								<div class="col-md-7 col-lg-8">
+									<div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+                                        <h3>Garantía de calidad y compatibilidad</h3>
+                                        <p>Nuestros productos cumplen con los más altos estándares del sector, garantizando un rendimiento confiable en diversos entornos de telecomunicaciones. Cada componente es sometido a pruebas rigurosas en equipos reales, asegurando su integración fluida con múltiples plataformas y dispositivos.</p>
+                                        <ul>
+                                            <li>✅ <strong>Evaluación en entornos simulados</strong></li>
+                                            <li>✅ <strong>Pruebas en sistemas y equipos reales</strong></li>
+                                            <li>✅ <strong>Control de calidad exhaustivo para máxima eficiencia</strong></li>
+                                        </ul>
+                                        <p>La versatilidad y compatibilidad son el sello de nuestra marca. Ofrecemos soluciones adaptables que optimizan la conectividad y el desempeño de redes de última generación.</p>
+									</div>
+								</div>
+								
+								<div class="col-11 col-md-5 col-lg-4 m-lr-auto">
+									<div class="how-bor1 ">
+									<!-- <div class="hov-img0">&nbsp;</div> -->
+										<div class="hov-img0">
+											<img src="https://tecnopaq.dramelissapalma.com/Assets/images/uploads/laboratorioFO.png" alt="" width="500" height="333">
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+				
+    </section>
+
+	<!-- Marcas -->
+		<div class="container text-center p-t-80">
+			<hr>
+			<div class="p-t-80">
+				<h1 class="ltext-103 c15">Nuestras Marcas</h1>
+			</div>
+			<div>
+				<br>
+				<p>Trabajamos con las mejores marcas...</p>
+			</div>
+			<br>
+			<div class="row position-center">
+				<div class="col-md-3">
+					<img src="<?=media() ?>/images/mTecnoPaq.png" width="70%" height="70%" alt="Logo Marca Tecnopaq">
+				</div>
+				<div class="col-md-3">
+					<img src="<?=media() ?>/images/mCE.png" width="50%" height="50%" alt="Logo Marca CE">
+				</div>
+				<div class="col-md-3" >
+					<img src="<?=media() ?>/images/mTecnoOpt.png" width="50%" height="50%" alt="Logo Marca TecnoOptic">
+				</div>
+				<div class="col-md-3">
+					<img src="<?=media() ?>/images/mPrueba.png" width="50%" height="50%" alt="Logo Marca Cisco">
+				</div>
+			</div>
+		</div>
+
+			<!--clients -->
+			<section class="container my-5">
+						<div class="row align-items-center mb-5">
+							<div class="col-md-7">
+							<h1>
+								From beginners to seasoned pros, I create <strong>custom plans</strong>
+							</h1>
+							<p class="lead text-muted">
+								tailored to help you unlock your full potential and succeed in races.
+							</p>
+							</div>
+							<div class="col-md-5 text-center">
+							<img src="https://cdn.pixabay.com/photo/2018/03/10/09/45/businessman-3213659_1280.jpg" alt="Coach" class="img-fluid rounded-lg shadow">
+							</div>
+						</div>
+
+						<div class="row text-center border-top pt-4">
+							<div class="col-6 col-md-3 mb-4">
+							<h2 class="counter" data-count="15">0</h2>
+							<p class="text-muted">Years of experience</p>
+							</div>
+							<div class="col-6 col-md-3 mb-4">
+							<h2 class="counter" data-count="200">0</h2>
+							<p class="text-muted">Athletes coached</p>
+							</div>
+							<div class="col-6 col-md-3 mb-4">
+							<h2 class="counter" data-count="500">0</h2>
+							<p class="text-muted">Race strategies</p>
+							</div>
+							<div class="col-6 col-md-3 mb-4">
+							<h2 class="counter" data-count="10000">0</h2>
+							<p class="text-muted">Training hours</p>
+							</div>
+						</div>
+			</section>
+
+	
+	<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const counters = document.querySelectorAll('.counter');
+    const speed = 100;
+
+    const animateCounter = (counter) => {
+      const target = +counter.getAttribute('data-count');
+      let count = 0;
+      const increment = Math.ceil(target / speed);
+
+      const update = () => {
+        if (count < target) {
+          count += increment;
+          counter.innerText = count.toLocaleString();
+          requestAnimationFrame(update);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      };
+
+      counter.innerText = '0'; // Reinicia
+      update();
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+
+    counters.forEach(counter => {
+      observer.observe(counter);
+    });
+  });
+</script>
+
+
+|
+<?php 
+	footerEcommerce($data);
+
+?>
